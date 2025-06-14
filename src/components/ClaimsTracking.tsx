@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Filter, Download, Eye } from 'lucide-react';
-import { mockClaims } from '../data/mockData';
+import { mockClaims } from '../Data/mockData';
 import { Claim } from '../types';
 
 const ClaimsTracking: React.FC = () => {
