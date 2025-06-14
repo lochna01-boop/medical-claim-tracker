@@ -1,6 +1,6 @@
 import React from 'react';
 import { Activity, Users, FileText, DollarSign, TrendingUp, Clock } from 'lucide-react';
-import { mockClaims } from '../data/mockData';
+import { mockClaims } from '../Data/mockData';
 
 const Dashboard: React.FC = () => {
   const totalClaims = mockClaims.length;
