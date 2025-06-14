@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Filter, Download, Eye } from 'lucide-react';
-import { mockClaims } from '../Data/mockData';
+import { mockClaims } from '../data/mockData';
 import { Claim } from '../types';
 
 const ClaimsTracking: React.FC = () => {
@@ -116,7 +116,7 @@ const ClaimsTracking: React.FC = () => {
                     <div className="text-sm text-gray-500">Bill: {claim.billNo}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    ₹{claim.billAmount.toLocaleString('en-IN')}
+                    ${claim.billAmount.toLocaleString()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(claim.status)}`}>

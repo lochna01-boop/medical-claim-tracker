@@ -26,15 +26,6 @@ const ClaimForm: React.FC = () => {
     'SELF', 'WIFE', 'SON 1', 'SON 2', 'DAUGHTER 1', 'DAUGHTER 2', 'FATHER', 'MOTHER'
   ];
 
-  const formatINR = (amount: string | number): string => {
-    const number = typeof amount === 'string' ? parseFloat(amount) : amount;
-    if (isNaN(number)) return '';
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-    }).format(number);
-  };
-
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
@@ -42,7 +33,7 @@ const ClaimForm: React.FC = () => {
   const handleDocumentChange = (index: number, field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
-      documents: prev.documents.map((doc, i) =>
+      documents: prev.documents.map((doc, i) => 
         i === index ? { ...doc, [field]: value } : doc
       )
     }));
@@ -177,21 +168,14 @@ const ClaimForm: React.FC = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Bill Amount</label>
-                <div>
-                  <input
-                    type="number"
-                    step="0.01"
-                    value={formData.billAmount}
-                    onChange={(e) => handleInputChange('billAmount', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
-                  />
-                  {formData.billAmount && (
-                    <p className="text-sm text-green-600 mt-1">
-                      Formatted: {formatINR(formData.billAmount)}
-                    </p>
-                  )}
-                </div>
+                <input
+                  type="number"
+                  step="0.01"
+                  value={formData.billAmount}
+                  onChange={(e) => handleInputChange('billAmount', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required
+                />
               </div>
             </div>
           </div>
@@ -209,7 +193,7 @@ const ClaimForm: React.FC = () => {
                 <span>Add Document</span>
               </button>
             </div>
-
+            
             {formData.documents.map((doc, index) => (
               <div key={index} className="border border-gray-200 rounded-lg p-4 mb-4">
                 <div className="flex items-center justify-between mb-4">
@@ -224,7 +208,7 @@ const ClaimForm: React.FC = () => {
                     </button>
                   )}
                 </div>
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Document Header</label>
@@ -238,21 +222,14 @@ const ClaimForm: React.FC = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Amount</label>
-                    <div>
-                      <input
-                        type="number"
-                        step="0.01"
-                        value={doc.amount}
-                        onChange={(e) => handleDocumentChange(index, 'amount', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        required
-                      />
-                      {doc.amount && (
-                        <p className="text-sm text-green-600 mt-1">
-                          Formatted: {formatINR(doc.amount)}
-                        </p>
-                      )}
-                    </div>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={doc.amount}
+                      onChange={(e) => handleDocumentChange(index, 'amount', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      required
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Doctor Name</label>

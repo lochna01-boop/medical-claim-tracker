@@ -1,6 +1,6 @@
 import React from 'react';
 import { Activity, Users, FileText, DollarSign, TrendingUp, Clock } from 'lucide-react';
-import { mockClaims } from '../Data/mockData';
+import { mockClaims } from '../data/mockData';
 
 const Dashboard: React.FC = () => {
   const totalClaims = mockClaims.length;
@@ -18,7 +18,7 @@ const Dashboard: React.FC = () => {
     },
     {
       title: 'Total Amount',
-      value: `₹${totalAmount.toLocaleString('en-IN')}`, // 🇮🇳 Indian format
+      value: `$${totalAmount.toLocaleString()}`,
       icon: DollarSign,
       color: 'bg-green-500',
       change: '+8%'
@@ -94,7 +94,7 @@ const Dashboard: React.FC = () => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{claim.hospital}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    ₹{claim.billAmount.toLocaleString('en-IN')}
+                    ${claim.billAmount.toLocaleString()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
